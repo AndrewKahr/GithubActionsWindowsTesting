@@ -11,7 +11,7 @@ jobs:
       
       - name: Write License File
         run: |
-              $a=( echo ${{ secrets.UNITY_LICENSE }} | Out-String )
+              $a=( echo "${{ secrets.UNITY_LICENSE }}" | Out-String )
               $a | Out-File license.ulf
         
       - run: type license.ulf
