@@ -17,4 +17,9 @@ jobs:
           python-version: 3.8 #install the python needed
       - name: execute py script # run the run.py to get the latest data
         run: |
-              python run.py
+              python get_activation_file.py
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Upload Activation File
+          path: Unity_v2020.3.24f1.alf
