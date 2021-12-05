@@ -5,8 +5,8 @@ jobs:
     runs-on: windows-latest
     
     steps:
-      -name: Install Unity Hub
-       run: choco install unity-hub --no-progress -y
+      - name: Install Unity Hub
+        run: choco install unity-hub --no-progress -y
        
-       -name: Check install worked
-        run: "C:\Program Files\Unity Hub\Unity Hub.exe" -- --headless help
+      - name: Check install worked
+        run: C:/Program Files/Unity Hub/Unity Hub.exe -- --headless help
