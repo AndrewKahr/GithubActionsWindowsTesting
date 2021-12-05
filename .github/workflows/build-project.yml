@@ -18,14 +18,13 @@ jobs:
         name: Add editor folder
         run: mkdir \test-project\Assets\Editor
       
-      - run: dir
-      
-      - run: pwd
-      
-      - shell: cmd
-        name: Add Build Scripts
-        run: ECHO D|xcopy UnityBuilderAction "test-project/Assets/Editor/UnityBuilderAction/" /E /H
+      #- shell: cmd
+      #  name: Add Build Scripts
+      #  run: ECHO D|xcopy UnityBuilderAction "test-project/Assets/Editor/UnityBuilderAction/" /E /H
 
+      - name: Add Build Scripts
+        run: Copy-Item -Path "UnityBuilderAction" -Destination "test-project/Assets/Editor/UnityBuilderAction/" -Recurse
+      
       - name: Make output folder
         run: mkdir output
       
