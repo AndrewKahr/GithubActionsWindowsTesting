@@ -8,6 +8,9 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content to github runner.
         
+      - name: list files
+        run: dir
+        
       - name: Install Unity Hub
         run: choco install unity-hub --no-progress -y
       
