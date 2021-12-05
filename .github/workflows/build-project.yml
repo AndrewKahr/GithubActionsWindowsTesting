@@ -9,10 +9,10 @@ jobs:
         uses: actions/checkout@v2 # checkout the repository content to github runner.
         
       
-        - name: Write License File
-          run: |
-                $a=( echo ${{ secrets.UNITY_LICENSE }} | Out-String )
-                $a | Out-File license.ulf
+      - name: Write License File
+        run: |
+              $a=( echo ${{ secrets.UNITY_LICENSE }} | Out-String )
+              $a | Out-File license.ulf
         
       - run: type license.ulf
       
