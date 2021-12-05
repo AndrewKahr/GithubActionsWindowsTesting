@@ -5,4 +5,4 @@ activate_cmd = [r"C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe
 
 
 def activate_unity():
-    run_cmd(activate_cmd)
+    print(run_cmd(activate_cmd))
