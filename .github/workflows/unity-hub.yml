@@ -13,7 +13,7 @@ jobs:
        
       - name: Install Version
         run: |
-          "C:/Program Files/Unity Hub/Unity Hub.exe -- --headless install 2020.3.6f1"
+          "C:/Program Files/Unity Hub/Unity Hub.exe -- --headless install --version 2020.3.24f1 --changeset 79c78de19888"
       
       - name: setup python
         uses: actions/setup-python@v2
