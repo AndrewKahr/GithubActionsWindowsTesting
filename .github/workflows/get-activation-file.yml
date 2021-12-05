@@ -1,7 +1,7 @@
 on: push
 
 jobs:
-  install-unity-hub:
+  get-activation-file:
     runs-on: windows-latest
     
     steps:
