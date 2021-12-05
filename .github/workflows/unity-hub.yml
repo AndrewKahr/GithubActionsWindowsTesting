@@ -9,4 +9,5 @@ jobs:
         run: choco install unity-hub --no-progress -y
        
       - name: Check install worked
-        run: "C:/Program Files/Unity Hub/Unity Hub.exe" -- --headless help
+        run: |
+          "C:/Program Files/Unity Hub/Unity Hub.exe" -- --headless help
