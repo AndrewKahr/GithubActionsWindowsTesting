@@ -12,7 +12,8 @@ jobs:
         name: Write License File
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        run: echo ${{ secrets.UNITY_LICENSE }} > license.ulf
+        run: |
+          echo "${{ secrets.UNITY_LICENSE }}" > license.ulf
         
       - run: type license.ulf
       
