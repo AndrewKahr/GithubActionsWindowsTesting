@@ -1,7 +1,7 @@
 on: push
 
 jobs:
-  install-unity-hub:
+  build-il2cpp-windows:
     runs-on: windows-latest
     
     steps:
@@ -21,10 +21,6 @@ jobs:
       - shell: cmd
         name: Add editor folder
         run: mkdir \test-project\Assets\Editor
-      
-      #- shell: cmd
-      #  name: Add Build Scripts
-      #  run: ECHO D|xcopy UnityBuilderAction "test-project/Assets/Editor/UnityBuilderAction/" /E /H
 
       - name: Add Build Scripts
         run: Copy-Item -Path "UnityBuilderAction" -Destination "test-project/Assets/Editor/UnityBuilderAction/" -Recurse
