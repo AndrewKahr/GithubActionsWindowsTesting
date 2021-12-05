@@ -8,13 +8,13 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content to github runner.
         
-      - name: Install Unity Hub
-        run: choco install unity-hub --no-progress -y
-
       - shell: cmd
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        run: echo %UNITY_LICENSE% > license.ulf
+        run: echo $env:UNITY_LICENSE > license.ulf
+        
+      - name: Install Unity Hub
+        run: choco install unity-hub --no-progress -y
 
       - name: Add editor folder
         run: if not exist "./test-project/Assets/Editor" mkdir ./test-project/Assets/Editor
