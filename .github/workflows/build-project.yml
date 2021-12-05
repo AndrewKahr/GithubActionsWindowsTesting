@@ -17,8 +17,9 @@ jobs:
       - shell: cmd
         name: Add editor folder
         run: mkdir \test-project\Assets\Editor
-
-      - name: Add Build Scripts
+      
+      - shell: cmd
+        name: Add Build Scripts
         run: ECHO D|xcopy UnityBuilderAction "test-project/Assets/Editor/UnityBuilderAction/" /E /H
 
       - name: Make output folder
