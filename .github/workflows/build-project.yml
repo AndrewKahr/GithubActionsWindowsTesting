@@ -11,8 +11,8 @@ jobs:
       
       - name: Write License File
         run: |
-              $a=( echo "${{ secrets.UNITY_LICENSE }}" | Out-String )
-              $a | Out-File license.ulf
+              echo ${{ secrets.UNITY_LICENSE_B64 }} > license.ulf.b64
+              certutil -decode license.ulf.b64 license.ulf
         
       - run: type license.ulf
       
