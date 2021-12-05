@@ -14,8 +14,7 @@ jobs:
       - shell: cmd
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        run: |
-          "%UNITY_LICENSE%" > license.ulf
+        run: echo %UNITY_LICENSE% > license.ulf
 
       - name: Add editor folder
         run: if not exist "./test-project/Assets/Editor" mkdir ./test-project/Assets/Editor
