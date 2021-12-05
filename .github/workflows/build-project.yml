@@ -9,14 +9,13 @@ jobs:
         uses: actions/checkout@v2 # checkout the repository content to github runner.
         
       - shell: cmd
+        name: Write License File
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         run: echo $env:UNITY_LICENSE > license.ulf
         
-      - name: Install Unity Hub
-        run: choco install unity-hub --no-progress -y
-
-      - name: Add editor folder
+      - shell: cmd
+        name: Add editor folder
         run: if not exist "./test-project/Assets/Editor" mkdir ./test-project/Assets/Editor
 
       - name: Add Build Scripts
@@ -24,6 +23,9 @@ jobs:
 
       - name: Make output folder
         run: mkdir output
+      
+      - name: Install Unity Hub
+        run: choco install unity-hub --no-progress -y
 
       - name: setup python
         uses: actions/setup-python@v2
