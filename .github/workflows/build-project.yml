@@ -1,0 +1,40 @@
+on: push
+
+jobs:
+  install-unity-hub:
+    runs-on: windows-latest
+    
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+        
+      - name: Install Unity Hub
+        run: choco install unity-hub --no-progress -y
+
+      - shell: cmd
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        run: |
+          "%UNITY_LICENSE%" > license.ulf
+
+      - name: Add editor folder
+        run: if not exist "./test-project/Assets/Editor" mkdir ./test-project/Assets/Editor
+
+      - name: Add Build Scripts
+        run: ECHO D|xcopy UnityBuilderAction "test-project/Assets/Editor/UnityBuilderAction/" /E /H
+
+      - name: Make output folder
+        run: mkdir output
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+              python build_project.py
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Upload Output Build
+          path: output
