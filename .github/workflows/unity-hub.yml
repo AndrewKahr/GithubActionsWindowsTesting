@@ -10,4 +10,4 @@ jobs:
        
       - name: Check install worked
         run: |
-          "C:/Program Files/Unity Hub/Unity Hub.exe" -- --headless help
+          "C:/Program Files/Unity Hub/Unity Hub.exe -- --headless help"
