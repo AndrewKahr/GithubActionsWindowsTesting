@@ -5,6 +5,9 @@ jobs:
     runs-on: windows-latest
     
     steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+        
       - name: Install Unity Hub
         run: choco install unity-hub --no-progress -y
        
@@ -12,5 +15,10 @@ jobs:
         run: |
           "C:/Program Files/Unity Hub/Unity Hub.exe -- --headless install 2020.3.6f1"
       
-      - name: Check Python
-        run: python --version
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+              python run.py
