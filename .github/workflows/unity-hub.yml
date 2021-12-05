@@ -8,6 +8,6 @@ jobs:
       - name: Install Unity Hub
         run: choco install unity-hub --no-progress -y
        
-      - name: Check install worked
+      - name: Install Version
         run: |
-          "C:/Program Files/Unity Hub/Unity Hub.exe -- --headless help"
+          "C:/Program Files/Unity Hub/Unity Hub.exe -- --headless install 2020.3.6f1"
