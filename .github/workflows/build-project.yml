@@ -13,7 +13,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         run: |
-          echo "${{ secrets.UNITY_LICENSE_B64 }}" > license.ulf.b64
+          echo ${{ secrets.UNITY_LICENSE_B64 }} > license.ulf.b64
           certutil -decode license.ulf.b64 license.ulf
         
       - run: type license.ulf
