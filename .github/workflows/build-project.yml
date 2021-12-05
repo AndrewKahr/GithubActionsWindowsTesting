@@ -8,13 +8,11 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content to github runner.
         
-      - shell: cmd
-        name: Write License File
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        run: |
-          $a=( echo ${{ secrets.UNITY_LICENSE }} | Out-String )
-          $a | Out-File license.ulf
+      
+        - name: Write License File
+          run: |
+            $a=( echo ${{ secrets.UNITY_LICENSE }} | Out-String )
+            $a | Out-File license.ulf
         
       - run: type license.ulf
       
