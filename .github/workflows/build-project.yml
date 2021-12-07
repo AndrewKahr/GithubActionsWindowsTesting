@@ -30,6 +30,7 @@ jobs:
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASS: ${{ secrets.UNITY_PASS }}
+          PYTHONUNBUFFERED: 1
         run: |
               python build_project.py
 
