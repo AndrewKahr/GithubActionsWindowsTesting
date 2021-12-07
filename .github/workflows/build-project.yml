@@ -7,14 +7,6 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content to github runner.
-        
-      
-      - name: Write License File
-        run: |
-              echo ${{ secrets.UNITY_LICENSE_B64 }} > license.ulf.b64
-              certutil -decode license.ulf.b64 license.ulf
-        
-      - run: type license.ulf
       
       - shell: cmd
         name: Add editor folder
@@ -32,8 +24,12 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8 #install the python needed
-      - name: execute py script # run the run.py to get the latest data
+          python-version: 3.8 #install the python version needed
+      - name: Run Install and Build Py Script
+        env:
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          UNITY_USER: ${{ secrets.UNITY_USER }}
+          UNITY_PASS: ${{ secrets.UNITY_PASS }}
         run: |
               python build_project.py
 
