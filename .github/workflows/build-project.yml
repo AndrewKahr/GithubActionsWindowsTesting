@@ -20,19 +20,42 @@ jobs:
       
       - name: Install Unity Hub
         run: choco install unity-hub --no-progress -y
-
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8 #install the python version needed
-      - name: Run Install and Build Py Script
-        env:
+        
+      - name: Activate Unity
+        env: 
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASS: ${{ secrets.UNITY_PASS }}
-          PYTHONUNBUFFERED: 1
         run: |
-              python build_project.py
+              & "C:\Program Files\Unity\Hub\Editor\$Env:UNITY_VERSION\Editor\Unity.exe" -batchmode -quit -nographics `
+                                                                                -username $Env:UNITY_USER `
+                                                                                -password $Env:UNITY_PASS `
+                                                                                -serial $Env:UNITY_SERIAL `
+                                                                                -logfile | Out-Host
+    
+      - name: Build Project
+        run: |
+              & "C:\Program Files\Unity\Hub\Editor\$Env:UNITY_VERSION\Editor\Unity.exe" -quit -batchmode -nographics `
+                                                                          -projectPath test-project `
+                                                                          -executeMethod UnityBuilderAction.Builder.BuildProject `
+                                                                          -buildTarget StandaloneWindows64 `
+                                                                          -customBuildTarget StandaloneWindows64 `
+                                                                          -customBuildPath ../output/output.exe `
+                                                                          -buildVersion v1.0.0 `
+                                                                          -androidVersionCode 1 `
+                                                                          $Env:CUSTOM_PARAMETERS `
+                                                                          -logfile | Out-Host
+      
+      - name: Return License
+        env:
+          UNITY_USER: ${{ secrets.UNITY_USER }}
+          UNITY_PASS: ${{ secrets.UNITY_PASS }}
+        run: |
+              & "C:\Program Files\Unity\Hub\Editor\$Env:UNITY_VERSION\Editor\Unity.exe" -batchmode -quit -nographics `
+                                                                                        -username $Env:UNITY_USER `
+                                                                                        -password $Env:UNITY_PASS `
+                                                                                        -returnlicense `
+                                                                                        -logfile | Out-Host
 
       - uses: actions/upload-artifact@v2
         with:
