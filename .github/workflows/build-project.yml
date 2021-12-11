@@ -27,7 +27,7 @@ jobs:
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASS: ${{ secrets.UNITY_PASS }}
         run: |
-              & "C:\Program Files\Unity\Hub\Editor\$Env:UNITY_VERSION\Editor\Unity.exe" -batchmode -quit -nographics `
+              & "C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe" -batchmode -quit -nographics `
                                                                                 -username $Env:UNITY_USER `
                                                                                 -password $Env:UNITY_PASS `
                                                                                 -serial $Env:UNITY_SERIAL `
@@ -35,7 +35,7 @@ jobs:
     
       - name: Build Project
         run: |
-              & "C:\Program Files\Unity\Hub\Editor\$Env:UNITY_VERSION\Editor\Unity.exe" -quit -batchmode -nographics `
+              & "C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe" -quit -batchmode -nographics `
                                                                           -projectPath test-project `
                                                                           -executeMethod UnityBuilderAction.Builder.BuildProject `
                                                                           -buildTarget StandaloneWindows64 `
@@ -51,7 +51,7 @@ jobs:
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASS: ${{ secrets.UNITY_PASS }}
         run: |
-              & "C:\Program Files\Unity\Hub\Editor\$Env:UNITY_VERSION\Editor\Unity.exe" -batchmode -quit -nographics `
+              & "C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe" -batchmode -quit -nographics `
                                                                                         -username $Env:UNITY_USER `
                                                                                         -password $Env:UNITY_PASS `
                                                                                         -returnlicense `
