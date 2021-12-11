@@ -24,7 +24,7 @@ jobs:
       - name: Install Unity
         shell: cmd
         run: |
-              "C:/Program Files/Unity Hub/Unity Hub.exe" -- --headless install --version 2020.3.24f1 --changeset 79c78de19888 --module windows-il2cpp & if %ERRORLEVEL% EQU 1 exit 0
+              "C:/Program Files/Unity Hub/Unity Hub.exe" -- --headless install --version 2020.3.24f1 --changeset 79c78de19888 --module windows-il2cpp & exit 0
         
       - name: Activate Unity
         env: 
@@ -48,7 +48,6 @@ jobs:
                                                                           -customBuildPath ../output/output.exe `
                                                                           -buildVersion v1.0.0 `
                                                                           -androidVersionCode 1 `
-                                                                          $Env:CUSTOM_PARAMETERS `
                                                                           -logfile | Out-Host
       
       - name: Return License
