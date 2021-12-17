@@ -8,12 +8,12 @@ jobs:
       - name: Test
         env: 
           TAGS: |
-                unityci/base:windows-a;
-                unityci/base:windows-b;
-                unityci/base:windows-c;
+                unityci/base:windows-a
+                unityci/base:windows-b
+                unityci/base:windows-c
                 unityci/base:windows-d
         run: |
-          Foreach ($i in $Env:TAGS)
+          Foreach ($i in $Env:TAGS -split "`n")
           {
             echo $i
             echo Hi
