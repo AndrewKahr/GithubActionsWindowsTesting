@@ -1,0 +1,15 @@
+on: push
+
+jobs:
+  test-commands:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Test
+        env: 
+          TAGS: |
+                unityci/base:windows-a;
+                unityci/base:windows-b;
+                unityci/base:windows-c;
+                unityci/base:windows-d
+        run: echo $Env:TAGS
