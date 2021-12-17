@@ -12,4 +12,9 @@ jobs:
                 unityci/base:windows-b;
                 unityci/base:windows-c;
                 unityci/base:windows-d
-        run: echo $Env:TAGS
+        run: |
+          Foreach ($i in $Env:TAGS)
+          {
+            echo $i
+            echo Hi
+          }
