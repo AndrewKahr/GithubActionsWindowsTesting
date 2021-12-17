@@ -13,7 +13,7 @@ jobs:
                 unityci/base:windows-c
                 unityci/base:windows-d
         run: |
-          Foreach ($i in $Env:TAGS -split "`n")
+          Foreach ($i in $Env:TAGS.Split("`n",[System.StringSplitOptions]::RemoveEmptyEntries))
           {
             echo $i
             echo Hi
