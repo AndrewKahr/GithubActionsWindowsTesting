@@ -26,22 +26,4 @@ jobs:
       - name: Dir sizes 3
         run: Get-ChildItem -Path "c:\Android" -Recurse | Measure-Object -Sum Length
       
-      - name: Dir Sizes 2
-        run: |
-              switch((Get-ChildItem -Path "c:\program files" -Recurse | Measure-Object -Sum Length).Sum) {
-                {$_ -gt 1GB} {
-                  '{0:0.0} GiB' -f ($_/1GB)
-                  break
-                }
-                {$_ -gt 1MB} {
-                  '{0:0.0} MiB' -f ($_/1MB)
-                  break
-                }
-                {$_ -gt 1KB} {
-                  '{0:0.0} KiB' -f ($_/1KB)
-                  break
-                }
-                default { "$_ bytes" }
-              }
-      
             
