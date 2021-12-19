@@ -12,4 +12,4 @@ jobs:
         run:  Get-ChildItem -Path "C:/"
       
       - name: Dir Sizes 2
-        run: dir "c:\"
+        run: dir "c:\" /s
