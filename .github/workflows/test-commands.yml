@@ -13,7 +13,7 @@ jobs:
       
       - name: Dir Sizes 2
         run: |
-              switch((ls -r|measure -sum Length).Sum) {
+              switch((Get-ChildItem -Path "c:\" -Recurse | Measure-Object -Sum Length).Sum) {
                 {$_ -gt 1GB} {
                   '{0:0.0} GiB' -f ($_/1GB)
                   break
