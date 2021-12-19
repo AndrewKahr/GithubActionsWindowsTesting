@@ -16,7 +16,10 @@ jobs:
         
       - name: Dir D
         run: dir "D:\"
-        
+      
+      - name: List Partitions
+        run: Get-Partition
+      
       - name: Dir sizes 3
         run: Get-ChildItem -Path "c:\dotnet" -Recurse | Measure-Object -Sum Length
         
