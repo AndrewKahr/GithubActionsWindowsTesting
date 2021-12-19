@@ -21,7 +21,7 @@ jobs:
         run: dir "c:\program files"
       
       - name: Dir sizes 3
-        run: Get-ChildItem -Path "c:\dotnet" -Recurse | Measure-Object -Sum Length
+        run: Get-ChildItem -Path "c:\program files\dotnet" -Recurse | Measure-Object -Sum Length
         
       - name: Dir sizes 3
         run: Get-ChildItem -Path "c:\Android" -Recurse | Measure-Object -Sum Length
