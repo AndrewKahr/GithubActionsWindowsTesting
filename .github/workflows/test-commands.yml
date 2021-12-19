@@ -10,6 +10,9 @@ jobs:
       
       - name: Dir Sizes
         run:  Get-ChildItem -Path "C:/"
+        
+      - name: Type InstalledSoftware.md
+        run: type InstalledSoftware.md
       
       - name: Dir Sizes 2
         run: |
