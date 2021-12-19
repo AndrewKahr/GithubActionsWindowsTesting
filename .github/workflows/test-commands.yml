@@ -13,6 +13,15 @@ jobs:
         
       - name: Type InstalledSoftware.md
         run: type c:\InstalledSoftware.md
+        
+      - name: Dir sizes 3
+        run: Get-ChildItem -Path "c:\dotnet" -Recurse | Measure-Object -Sum Length
+        
+      - name: Dir sizes 3
+        run: Get-ChildItem -Path "c:\Android" -Recurse | Measure-Object -Sum Length
+        
+      - name: Dir sizes 3
+        run: Get-ChildItem -Path "c:\" -Recurse | Measure-Object -Sum Length
       
       - name: Dir Sizes 2
         run: |
@@ -31,6 +40,5 @@ jobs:
                 }
                 default { "$_ bytes" }
               }
-      - name: Dir sizes 3
-        run: Get-ChildItem -Path "c:\" -Recurse | Measure-Object -Sum Length
+      
             
