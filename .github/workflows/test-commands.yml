@@ -10,3 +10,6 @@ jobs:
       
       - name: Dir Sizes
         run:  Get-ChildItem -Path "C:/"
+      
+      - name: Dir Sizes 2
+        run: dir "c:\"
