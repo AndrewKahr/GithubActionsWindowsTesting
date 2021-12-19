@@ -28,4 +28,6 @@ jobs:
                 }
                 default { "$_ bytes" }
               }
+      - name: Dir sizes 3
+        run: Get-ChildItem -Path "c:\" -Recurse | Measure-Object -Sum Length
             
