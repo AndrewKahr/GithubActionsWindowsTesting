@@ -5,16 +5,8 @@ jobs:
     runs-on: windows-latest
     
     steps:
-      - name: Test
-        env: 
-          TAGS: |
-                unityci/base:windows-a
-                unityci/base:windows-b
-                unityci/base:windows-c
-                unityci/base:windows-d
-        run: |
-          Foreach ($i in $Env:TAGS.Split("`n",[System.StringSplitOptions]::RemoveEmptyEntries))
-          {
-            echo $i
-            echo Hi
-          }
+      - name: List Drive Sizes
+        run: get-PSDrive
+      
+      - name: Dir Sizes
+        run:  Get-ChildItem -Path "C:/"
