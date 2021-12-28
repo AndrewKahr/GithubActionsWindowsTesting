@@ -34,4 +34,4 @@ jobs:
       - name: Wrangle Inputs
         id: workflow_variables
         run: |
-              echo "Event ${{ github.event.event_type }}" && echo "${{ github.event.inputs.repoVersionFull }}"
+              echo "Event ${{ github.event.type }}" && echo "${{ github.event.inputs.repoVersionFull }}"
