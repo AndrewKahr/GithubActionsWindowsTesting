@@ -34,4 +34,4 @@ jobs:
       - name: Wrangle Inputs
         id: workflow_variables
         run: |
-              echo "Event ${{ github.event }}" && "${{ fromJSON(github.event.inputs) }}"
+              echo "Event ${{ github.event }}" && "${{ github.event.inputs }}"
