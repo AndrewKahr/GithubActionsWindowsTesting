@@ -31,7 +31,10 @@ jobs:
     runs-on: windows-latest
     
     steps:
-      - name: Wrangle Inputs
-        id: workflow_variables
+      - name: Run Docker
+        id: docker_run
         run: |
-              echo "Event ${{ toJSON(github.event) }}" && echo "${{ toJSON(github.event.inputs) }}"
+              docker run -d -p 5000:5000 --rm --name registry registry:2
+      - name: Pull Ubuntu
+        run: |
+              docker pull ubuntu
