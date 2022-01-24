@@ -27,7 +27,7 @@ jobs:
       - name: Install Unity
         shell: cmd
         run: |
-              "C:/Program Files/Unity Hub/Unity Hub.exe" -- --headless install --version 2020.3.24f1 --changeset 79c78de19888 --module windows-il2cpp & exit 0
+              "C:/Program Files/Unity Hub/Unity Hub.exe" -- --headless install --version 2021.1.20f1 --changeset be552157821d --module windows-il2cpp & exit 0
         
       - name: Activate Unity
         env: 
@@ -35,17 +35,15 @@ jobs:
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASS: ${{ secrets.UNITY_PASS }}
         run: |
-              & "C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe" -batchmode -quit -nographics `
+              & "C:\Program Files\Unity\Hub\Editor\2021.1.20f1\Editor\Unity.exe" -batchmode -quit -nographics `
                                                                                 -username $Env:UNITY_USER `
                                                                                 -password $Env:UNITY_PASS `
                                                                                 -serial $Env:UNITY_SERIAL `
                                                                                 -logfile | Out-Host
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
       
       - name: Build Project
         run: |
-              & "C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe" -quit -batchmode -nographics `
+              & "C:\Program Files\Unity\Hub\Editor\2021.1.20f1\Editor\Unity.exe" -quit -batchmode -nographics `
                                                                           -projectPath test-project `
                                                                           -executeMethod UnityBuilderAction.Builder.BuildProject `
                                                                           -buildTarget StandaloneWindows64 `
@@ -54,15 +52,13 @@ jobs:
                                                                           -buildVersion v1.0.0 `
                                                                           -androidVersionCode 1 `
                                                                           -logfile | Out-Host
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
         
       - name: Return License
         env:
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASS: ${{ secrets.UNITY_PASS }}
         run: |
-              & "C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe" -batchmode -quit -nographics `
+              & "C:\Program Files\Unity\Hub\Editor\2021.1.20f1\Editor\Unity.exe" -batchmode -quit -nographics `
                                                                                         -username $Env:UNITY_USER `
                                                                                         -password $Env:UNITY_PASS `
                                                                                         -returnlicense `
