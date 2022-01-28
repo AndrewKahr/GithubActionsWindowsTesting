@@ -24,6 +24,6 @@ jobs:
     
     steps:
       - name: Echo
-        if: ${{contains(inputs.modules, matrix.targetPlatform)}}
+        if: ${{contains(github.event.inputs.modules, matrix.targetPlatform)}}
         run: echo ${{inputs.modules}}
         
