@@ -24,5 +24,6 @@ jobs:
           - appletv
     
     steps:
-      - name: checkout repo content
+      - name: Echo
+        run: echo ${{inputs.modules}}
         
